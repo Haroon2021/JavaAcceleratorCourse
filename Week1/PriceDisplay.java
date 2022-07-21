@@ -4,7 +4,7 @@ class PriceDisplay {
         Double price = 15.99; 
         // My solution
         // System.out.println("The price for the item "+item+" is "+price);
-        // Solution from vide:
+        // Solution from video:
         System.out.printf("The price for the item %s is %.2f \n", item, price);
 
     }    

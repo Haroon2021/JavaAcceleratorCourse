@@ -1,13 +1,15 @@
 package game;
 
+import java.util.Random;
+
 public class Game {
 
-    public String theword;
+    
     public Integer remainingAttempts = 10;
-    public String[] DICTIONARY = {"MAKERS","CANDIES","DEVELOPER","LONDON"};
-
+   
     public Game(String word) {
-        this.theword = word;
+        WordChooser wordchooser = new WordChooser();
+        word = wordchooser.getRandomWordFromDictionary();
       }
 
 
@@ -40,5 +42,7 @@ public class Game {
     public Integer getRemainingAttempts() {
       return this.remainingAttempts;
     }
+
+   
 }
 
