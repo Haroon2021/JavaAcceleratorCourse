@@ -19,10 +19,7 @@ public class GameTest {
         when(mockWordChooser.getRandomWordFromDictionary()).thenReturn("MAKERS");
         this.game = new Game(mockWordChooser);
     }
-    @Test 
-    public void testGetsWordToGuess() {
-        assertEquals(this.game.getWordToGuess(), "M_____");
-    }
+
     @Test
     public void testGetintialRemainingAttempts() {
         assertEquals(this.game.getRemainingAttempts(), Integer.valueOf(10));
