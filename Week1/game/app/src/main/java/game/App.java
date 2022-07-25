@@ -21,9 +21,15 @@ public class App {
             
             Scanner sc= new Scanner(System.in);      
             Character a = sc.next().charAt(0);
-            game.guessLetter(a); 
-            System.out.println(game.getWordToGuess());
-        
+            Boolean result = game.guessLetter(a);
+
+            if (result == true) {
+                System.out.println("Right!");
+            } else {
+                System.out.println("Wrong...");
+            }
+
+            System.out.println(game.getWordToGuess());      
           }
           while (game.remainingAttempts > 0);
     }
