@@ -8,7 +8,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class MaskerTest {
-    private Game game;
+    // private Game game;
+    private Masker masker;
     @Before
     // This is done before each test
     public void initialiseTests() {
@@ -17,11 +18,24 @@ public class MaskerTest {
         // stubbing appears before the actual execution
         // the order of the 2 lines below is important the function calls need to be specified before using the mock
         when(mockWordChooser.getRandomWordFromDictionary()).thenReturn("MAKERS");
-        this.game = new Game(mockWordChooser);
+        this.masker = new Masker(mockWordChooser);
     }
     @Test 
     public void testGetsWordToGuess() {
-        assertEquals(this.game.getWordToGuess(), "M_____");
+        assertEquals(this.masker.getMaskedWord(), "M_____");
+    }
+
+    @Test
+    public void guessingLettersInWordToGuess() {
+        // creating a mock wordchooser using its class
+        // ArrayList<Character> guessedLetters = new ArrayList<Character>();
+        WordChooser mockWordChooser = mock(WordChooser.class);
+        // stubbing appears before the actual execution
+        // the order of the 2 lines below is important the function calls need to be specified before using the mock
+        when(mockWordChooser.getRandomWordFromDictionary()).thenReturn("MAKERS");
+        masker.lettersGuessed.add('K');
+        masker.lettersGuessed.add('R');
+        assertEquals(this.masker.getMaskedWord(),"M_K_R_");
     }
     
 }
