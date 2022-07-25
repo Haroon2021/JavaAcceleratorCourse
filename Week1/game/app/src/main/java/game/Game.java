@@ -33,6 +33,10 @@ public class Game {
       return this.remainingAttempts;
     }
 
+    public Boolean isGameLost(){
+      return remainingAttempts <= 0;
+    }
+
     public Boolean guessLetter(Character letter) {
       if (this.word.indexOf(letter) == -1) {
           remainingAttempts--;

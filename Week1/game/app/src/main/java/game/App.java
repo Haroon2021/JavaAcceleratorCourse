@@ -29,8 +29,13 @@ public class App {
                 System.out.println("Wrong...");
             }
 
-            System.out.println(game.getWordToGuess());      
+            System.out.println(game.getWordToGuess());
+            if (game.isGameLost() == true){
+                sc.close();
+                System.out.println("GAME OVER");
+            }   
           }
           while (game.remainingAttempts > 0);
     }
+    // sc.close();
 }
