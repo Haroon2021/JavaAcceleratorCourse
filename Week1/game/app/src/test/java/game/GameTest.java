@@ -41,5 +41,29 @@ public class GameTest {
         assertEquals(Integer.valueOf(9), this.game.getRemainingAttempts());
         
     }
+    @Test
+    public void testCorrectLetter() {
+         // creating a mock wordchooser using its class
+         WordChooser mockWordChooser = mock(WordChooser.class);
+         // stubbing appears before the actual execution
+         // the order of the 2 lines below is important the function calls need to be specified before using the mock
+         when(mockWordChooser.getRandomWordFromDictionary()).thenReturn("DEVELOPER");
+         this.game = new Game(mockWordChooser);
+         assertTrue("Letter E is in DEVELOPER", this.game.guessLetter(('E')));
+         assertEquals(game.getWordToGuess(),"DE_E___E_");
+    }
+    @Test
+    public void testCorrectLetters() {
+         // creating a mock wordchooser using its class
+         WordChooser mockWordChooser = mock(WordChooser.class);
+         // stubbing appears before the actual execution
+         // the order of the 2 lines below is important the function calls need to be specified before using the mock
+         when(mockWordChooser.getRandomWordFromDictionary()).thenReturn("DEVELOPER");
+         this.game = new Game(mockWordChooser);
+         this.game.guessLetter(('E'));
+         this.game.guessLetter(('V'));
+         assertEquals(game.getWordToGuess(),"DEVE___E_");
+    }
+    
 
 }
