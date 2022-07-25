@@ -30,10 +30,17 @@ public class App {
             }
 
             System.out.println(game.getWordToGuess());
+
             if (game.isGameLost() == true){
                 sc.close();
                 System.out.println("GAME OVER");
-            }   
+            } 
+
+            if (game.isGameWon()) {
+                System.out.println("Yeaaah! You won!");
+            
+                return;
+            }
           }
           while (game.remainingAttempts > 0);
     }
