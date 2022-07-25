@@ -3,7 +3,7 @@ package game;
 import java.util.ArrayList;
 
 public class Masker {
-    public String word;
+    private String word;
     public ArrayList<Character> lettersGuessed = new ArrayList<Character>();
 
     public Masker(WordChooser wordchooser) {
