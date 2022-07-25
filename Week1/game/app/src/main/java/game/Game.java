@@ -37,6 +37,10 @@ public class Game {
       return remainingAttempts <= 0;
     }
 
+    public Boolean isGameWon(){
+      return this.word.equals(getWordToGuess());
+    }
+
     public Boolean guessLetter(Character letter) {
       if (this.word.indexOf(letter) == -1) {
           remainingAttempts--;

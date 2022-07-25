@@ -76,10 +76,24 @@ public class GameTest {
          for (int i = 0; i < 10; i++) {
             this.game.guessLetter(('Q'));
           }
-        assertTrue("Checking to see if game is lost after 10 attempts",game.isGameLost());
+        assertTrue("Checking to see if game is lost after 10 attempts",game.isGameLost());    
+    }
 
+    @Test
+    public void testIsGameWon() {
+        WordChooser mockWordChooser = mock(WordChooser.class);
+         // stubbing appears before the actual execution
+         // the order of the 2 lines below is important the function calls need to be specified before using the mock
+         when(mockWordChooser.getRandomWordFromDictionary()).thenReturn("MAKERS");
+         this.game = new Game(mockWordChooser);
+         this.game.guessLetter(('M'));
+         this.game.guessLetter(('A'));
+         this.game.guessLetter(('K'));
+         this.game.guessLetter(('E'));
+         this.game.guessLetter(('R'));
+         this.game.guessLetter(('S'));
          
-
+        assertTrue("Checking to see if game returns message of won",game.isGameWon());    
     }
     
 
