@@ -35,5 +35,11 @@ public class GameTest {
     public void testGuessLetterReturnsFalseIfINorrectLetterGiven() {
         assertFalse("Test fails if incorrect letter is given", this.game.guessLetter('Z'));
     }
+    @Test
+    public void testIncorrectAnswerReducesCountByOne() {
+        this.game.guessLetter('Z');
+        assertEquals(Integer.valueOf(9), this.game.getRemainingAttempts());
+        
+    }
 
 }

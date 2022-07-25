@@ -32,15 +32,15 @@ public class Game {
       return this.remainingAttempts;
     }
 
-    public Boolean guessLetter(Character guessLetter) {
-      if (this.word.indexOf(guessLetter) != -1) {
-        this.lettersGuessed.add(guessLetter);
-        return true;
+    public Boolean guessLetter(Character letter) {
+      if (this.word.indexOf(letter) == -1) {
+          remainingAttempts--;
+          return false;
       } else {
-        this.remainingAttempts --;
-        return false;
+        lettersGuessed.add(letter);
+          return true;
       }
-    }
+  }
 
    
 }
