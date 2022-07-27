@@ -22,6 +22,13 @@ public class Tree {
     }
 
     public static void main(String[] args) {
+        Tree a = new Tree("Pine", 12, 15);
+        System.out.println(a.species);
+        for (int position : a.positionInForest) {
+            System.out.println(position);
+        }
+        System.out.println(a.foodReserves);
+        System.out.println(a.height);
         
     }
     // Getters and Setters ommited (explained in lesson 5 Encapsulation)
