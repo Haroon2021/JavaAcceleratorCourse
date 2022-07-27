@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Game {
 
-    public Integer remainingAttempts = 10;
+    public Integer remainingAttempts = 3;
     private String word;
     private ArrayList<Character> lettersGuessed = new ArrayList<Character>();
 

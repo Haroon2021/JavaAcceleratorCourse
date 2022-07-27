@@ -3,46 +3,81 @@
  */
 package game;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
+    public static ArrayList<Object> playersGame = new ArrayList<Object>();
+
     public String getGreeting() {
-        return "Welcome! Today the word to guess is:";
+        // System.out.println("Enter name for player 1: ");
+        // Scanner sc= new Scanner(System.in); 
+        // String playerName = sc.nextLine();
+        return "Today the word to guess is:";
     }
 
+    // public String createGame(){
+        // WordChooser wordChooser1 = new WordChooser();
+        // Game playerOne = new Game(wordChooser1);
+        // System.out.println(playerOne.getWordToGuess());
+
+        // WordChooser wordChooser2 = new WordChooser();
+        // Game playerTwo = new Game(wordChooser2);
+        // System.out.println(playerTwo.getWordToGuess());
+
+        // playersGame.add(playerOne);
+        // playersGame.add(playerTwo);
+        
+    // }
+
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
-        WordChooser wordChooser = new WordChooser();
-        Game game = new Game(wordChooser);
-        System.out.println(game.getWordToGuess());
+        WordChooser wordChooser1 = new WordChooser();
+        Game playerOne = new Game(wordChooser1);
+        System.out.println(playerOne.getWordToGuess());
 
-        do {
-            System.out.println("Enter one letter to guess (" + game.remainingAttempts + " attempts remaining):");
-            
-            Scanner sc= new Scanner(System.in);      
-            Character a = sc.next().charAt(0);
-            Boolean result = game.guessLetter(a);
+        WordChooser wordChooser2 = new WordChooser();
+        Game playerTwo = new Game(wordChooser2);
+        System.out.println(playerTwo.getWordToGuess());
 
-            if (result == true) {
-                System.out.println("Right!");
-            } else {
-                System.out.println("Wrong...");
+        playersGame.add(playerOne);
+        playersGame.add(playerTwo);
+
+        // System.out.println(new App().getGreeting());
+        
+        // [playerOne,playerTwo]
+        
+        for (int i = 0; i < playersGame.size(); i++) {  
+            System.out.println(playersGame.get(i));                    
+
+            do {
+                System.out.println("Enter one letter to guess (" + playerOne.remainingAttempts + " attempts remaining):");
+                
+                Scanner sc= new Scanner(System.in);      
+                Character a = sc.next().charAt(0);
+                Boolean result = playerOne.guessLetter(a);
+
+                if (result == true) {
+                    System.out.println("Right!");
+                } else {
+                    System.out.println("Wrong...");
+                }
+
+                System.out.println(playerOne.getWordToGuess());
+
+                if (playerOne.isGameLost() == true){
+                    sc.close();
+                    System.out.println("GAME OVER");
+                    return;
+                } 
+
+                if (playerOne.isGameWon()) {
+                    sc.close();
+                    System.out.println("Yeaaah! You won!");                
+                    return;
+                }
             }
-
-            System.out.println(game.getWordToGuess());
-
-            if (game.isGameLost() == true){
-                sc.close();
-                System.out.println("GAME OVER");
-            } 
-
-            if (game.isGameWon()) {
-                System.out.println("Yeaaah! You won!");
-            
-                return;
-            }
-          }
-          while (game.remainingAttempts > 0);
+            while (playerOne.remainingAttempts > 0);
+        }
     }
     // sc.close();
 }
