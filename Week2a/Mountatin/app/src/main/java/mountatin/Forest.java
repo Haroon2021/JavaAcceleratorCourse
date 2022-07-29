@@ -37,6 +37,8 @@ public class Forest {
                 System.out.printf(tree.speciesDeclaration());
                 System.out.println(" ");
 
+                growAllTrees();
+
             }
         }
     }
@@ -50,5 +52,12 @@ public class Forest {
         }
         return false;
     }   
+
+    private static void growAllTrees(){
+        for (Tree treeInForest : forest){
+            treeInForest.photosynthesise();
+            treeInForest.grow();
+        }
+    }
     
 }
