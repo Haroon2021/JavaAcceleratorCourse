@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class Tree {
 
-    private int height;
+    public int height;
     private int foodReserves;
     public int[] positionInForest;
     public String species;

@@ -7,25 +7,34 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class App {
+        public static Forest forest = new Forest();
+        public static ArrayList<Tree> newForest = forest.createForest();
         public static void main(String[] args) {
 
-            Forest forest = new Forest();
-            ArrayList<Tree> newForest = forest.createForest();
-            System.out.print(newForest);
+            // Forest forest = new Forest();
+            // ArrayList<Tree> newForest = forest.createForest();
+            // System.out.print(newForest);
 
-            for (Tree tree: newForest){
-                System.out.printf("This is my location %d %d \n", tree.positionInForest[0], tree.positionInForest[1]);
-            }
+            // for (Tree tree: newForest){
+            //     System.out.printf("This is my location %d %d \n", tree.positionInForest[0], tree.positionInForest[1]);
+            // }
             
 
-            String[][] grid = fillGrid(10, 10, "0");
-            createForestMap(grid);
+            String[][] grid = fillGrid(10, 10, ".");
+            // createForestMap(grid);
+            String[][] filledForest = findLocationOfTreeInForest(grid);
+            createForestMap(filledForest);
+
 
         }
         //Returns grid that has the placement of the trees added
         static String[][] findLocationOfTreeInForest(String[][] grid){
             for(Tree tree: newForest) {
-                grid[tree.positionInForest[0]-1][tree.positionInForest[1]-1] = "T";
+                if (tree.height >= 20){
+                    grid[tree.positionInForest[0]][tree.positionInForest[1]] = "T";
+                } else {
+                    grid[tree.positionInForest[0]][tree.positionInForest[1]] = "t";
+                }
             }
             return grid;
         }
