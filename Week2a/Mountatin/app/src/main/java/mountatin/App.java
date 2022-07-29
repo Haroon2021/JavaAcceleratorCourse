@@ -3,12 +3,69 @@
  */
 package mountatin;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class App {
         public static void main(String[] args) {
 
             Forest forest = new Forest();
-            forest.createForest();
+            ArrayList<Tree> newForest = forest.createForest();
+            System.out.print(newForest);
+
+            for (Tree tree: newForest){
+                System.out.printf("This is my location %d %d \n", tree.positionInForest[0], tree.positionInForest[1]);
+            }
+            
+
+            String[][] grid = fillGrid(10, 10, "0");
+            createForestMap(grid);
 
         }
+        //Returns grid that has the placement of the trees added
+        static String[][] findLocationOfTreeInForest(String[][] grid){
+            for(Tree tree: newForest) {
+                grid[tree.positionInForest[0]-1][tree.positionInForest[1]-1] = "T";
+            }
+            return grid;
+        }
+
+        // Creates the Grid length and width, occupies the cell by the character
+        static String[][] fillGrid(int rows, int cols, String cell){
+            String[][] grid = new String[rows][cols];
+        
+            String[] row = new String[cols];
+            Arrays.fill(row, cell);
+            grid[0] = row;
+            for (int i = 1; i < rows; i++) {
+                grid[i] = Arrays.copyOf(row, cols);
+            }
+            grid[4][4] = "T";
+            return grid;
+          }
+
+        // Creates a forest map to print in the Terminal
+        static void createForestMap(String[][] grid) {
+            
+            for (int i = 0; i < grid.length; i++) {
+                if (i == 0) {
+                    System.out.print("   ");
+                    for (int j = 0; j < grid[0].length; j++) {
+                        System.out.printf("%2d ", j + 1);
+                    }
+                    System.out.println();
+                }
+                for (int j = 0; j < grid[i].length; j++) {
+                    if (j == 0) {
+                        System.out.printf("%2d:", i + 1);
+                    }
+                    System.out.printf("%2s ", grid[i][j]);
+                }
+                System.out.println();
+                
+            }
+}
+
+        
       
 }

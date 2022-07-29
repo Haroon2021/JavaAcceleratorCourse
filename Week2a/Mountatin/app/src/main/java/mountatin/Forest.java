@@ -18,7 +18,7 @@ public class Forest {
         return random.nextInt(10);
     }
 
-    public void createForest() {
+    public ArrayList<Tree> createForest() {
         for (int i = 0; i < 5; i++) {
             for (String specie: species ) {
 
@@ -37,9 +37,9 @@ public class Forest {
                 System.out.println(" ");
 
                 growAllTrees();
-
             }
         }
+        return forest;
     }
 
     public static Boolean isGridOccupied(Integer xLocation, Integer yLocation){
