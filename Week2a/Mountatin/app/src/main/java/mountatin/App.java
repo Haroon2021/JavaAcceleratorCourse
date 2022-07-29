@@ -3,32 +3,12 @@
  */
 package mountatin;
 
-import java.util.ArrayList;
-import java.util.Random;
-
 public class App {
-        private static String[] species = {"pine","oak","birch","Juniper","fir","redwood","cypris","yew","hemolock","sequoia"};
-        private static ArrayList<Tree> forest = new ArrayList<Tree>();
         public static void main(String[] args) {
-            
-            for (int i = 0; i < 5; i++) {
-                for (String specie: species ) {
 
-                    Tree tree = new Tree(specie,randomnumberGenerator(),randomnumberGenerator() );
-                    System.out.printf(tree.positionInForest[0] + " , " + tree.positionInForest[1] + " ");
-                    forest.add(tree);
-                    System.out.printf(tree.speciesDeclaration());
-                    System.out.println(" ");
-                }
-            }
+            Forest forest = new Forest();
+            forest.createForest();
 
         }
-
-        public static Integer randomnumberGenerator() {
-            Random random = new Random();
-            return random.nextInt(10);
-        }
-      
-
       
 }
