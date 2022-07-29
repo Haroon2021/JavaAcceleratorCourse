@@ -6,9 +6,8 @@ import java.util.Random;
 public class Forest {
     private static String[] species = {"pine","oak","birch","Juniper","fir","redwood","cypris","yew","hemolock","sequoia"};
     private static ArrayList<Tree> forest = new ArrayList<Tree>();
-    public int minTrees;
-    private int gridMap;
 
+    public int minTrees;
 
     public Forest() {  
         this.minTrees = 5;
@@ -57,6 +56,7 @@ public class Forest {
         for (Tree treeInForest : forest){
             treeInForest.photosynthesise();
             treeInForest.grow();
+            treeInForest.isTreeMature();
         }
     }
     
